@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urjalabh - Solar ROI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <h1>Solar ROI Calculator</h1>
+        
+        <form id="roi-form" action="https://formspree.io/f/your_unique_id" method="POST">
+            
+            <div class="input-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g., Anjali Sharma" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Your Email ID</label>
+                <input type="email" id="email" name="email" placeholder="e.g., anjali@example.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="location">Your Location</label>
+                <select id="location" name="location" required>
+                    <option value="">-- Select Location --</option>
+                    <option value="maharashtra">Maharashtra</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="area">Available Rooftop Area (sq. meters)</label>
+                <input type="number" id="area" name="rooftop_area" placeholder="e.g., 50" required>
+            </div>
+
+            <div class="input-group">
+                <label for="cost">Total Installation Cost (in ₹)</label>
+                <input type="number" id="cost" name="install_cost" placeholder="e.g., 200000" required>
+            </div>
+
+            <div class="input-group">
+                <label for="rate">Your Electricity Rate (₹ per kWh/unit)</label>
+                <input type="number" id="rate" name="electricity_rate" placeholder="Auto-filled by location" required>
+            </div>
+
+            <button type="submit">Calculate & Get Details</button>
+            <p id="form-status"></p>
+        </form>
+
+        <div id="results" class="results-hidden">
+            <h2>Your Estimated Results:</h2>
+            <p><strong>Estimated Annual Savings:</strong> <span id="annualSavings">-</span></p>
+            <p><strong>Simple Payback Period:</strong> <span id="paybackPeriod">-</span></p>
+            <small>A copy of your details has been sent to us. We will get in touch shortly!</small>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
