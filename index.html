@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urjalabh - Solar ROI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>☀ Urjalabh Solar Rooftop ROI Calculator</h1>
+        <p>Estimate your return on investment for a solar rooftop system.</p>
+        
+        <div class="calculator">
+            <div class="input-group">
+                <label for="area">Available Rooftop Area (in sq. meters)</label>
+                <input type="number" id="area" placeholder="e.g., 50">
+            </div>
+
+            <div class="input-group">
+                <label for="cost">Total Installation Cost (in ₹)</label>
+                <input type="number" id="cost" placeholder="e.g., 200000">
+            </div>
+
+            <div class="input-group">
+                <label for="rate">Your Electricity Rate (₹ per kWh/unit)</label>
+                <input type="number" id="rate" placeholder="e.g., 8">
+            </div>
+
+            <button onclick="calculateROI()">Calculate My ROI</button>
+        </div>
+
+        <div id="results" class="results-hidden">
+            <h2>Your Estimated Results:</h2>
+            <p><strong>Estimated Annual Savings:</strong> <span id="annualSavings">-</span></p>
+            <p><strong>Simple Payback Period:</strong> <span id="paybackPeriod">-</span></p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
