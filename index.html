@@ -3,40 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urjalabh - Solar ROI Calculator</title>
+    <title>Urjalabh - Your Guide to Solar Energy in India</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>☀ Urjalabh Solar Rooftop ROI Calculator</h1>
-        <p>Estimate your return on investment for a solar rooftop system.</p>
-        
-        <div class="calculator">
-            <div class="input-group">
-                <label for="area">Available Rooftop Area (in sq. meters)</label>
-                <input type="number" id="area" placeholder="e.g., 50">
+    <header class="main-header">
+        <div class="logo">☀ Urjalabh</div>
+        <div class="contact-info">your-maskevinu4@gmail.com</div>
+    </header>
+
+    <div class="container welcome-container">
+        <aside class="left-column">
+            <h3>Maharashtra Electricity Tariffs</h3>
+            <p>(Sample MSEDCL Residential Rates)</p>
+            <ul>
+                <li><strong>0-100 Units:</strong> ~ ₹4.43 / unit</li>
+                <li><strong>101-300 Units:</strong> ~ ₹9.64/ unit</li>
+                <li><strong>301-500 Units:</strong> ~ ₹12.83 / unit</li>
+                <li><strong>Above 500 Units:</strong> ~ ₹14.33 / unit</li>
+            </ul>
+            <small>Note: These are approximate rates. The calculator uses an average for estimation.</small>
+        </aside>
+
+        <main class="middle-column">
+            <h2>Government Schemes for Solar Rooftop</h2>
+            <div class="card">
+                <h3>PM Surya Ghar: Muft Bijli Yojana</h3>
+                <p>A central scheme launched in 2024 to provide free electricity up to 300 units/month for 1 crore households by providing subsidies for rooftop solar installation.</p>
+                <a href="https://pmsuryaghar.gov.in/" target="_blank" class="official-link">Visit Official Site</a>
             </div>
-
-            <div class="input-group">
-                <label for="cost">Total Installation Cost (in ₹)</label>
-                <input type="number" id="cost" placeholder="e.g., 200000">
+            <div class="card">
+                <h3>National Portal for Rooftop Solar</h3>
+                <p>The national portal simplifies the process for installing rooftop solar plants, offering a direct channel for subsidy disbursement under the scheme.</p>
+                <a href="https://solarrooftop.gov.in/" target="_blank" class="official-link">Visit National Portal</a>
             </div>
+        </main>
 
-            <div class="input-group">
-                <label for="rate">Your Electricity Rate (₹ per kWh/unit)</label>
-                <input type="number" id="rate" placeholder="e.g., 8">
-            </div>
-
-            <button onclick="calculateROI()">Calculate My ROI</button>
-        </div>
-
-        <div id="results" class="results-hidden">
-            <h2>Your Estimated Results:</h2>
-            <p><strong>Estimated Annual Savings:</strong> <span id="annualSavings">-</span></p>
-            <p><strong>Simple Payback Period:</strong> <span id="paybackPeriod">-</span></p>
-        </div>
+        <aside class="right-column">
+            <h3>Ready to Go Solar?</h3>
+            <p>Find out your potential savings and return on investment in just a few clicks.</p>
+            <a href="calculator.html" class="cta-button">Calculate Your ROI →</a>
+        </aside>
     </div>
-    
-    <script src="script.js"></script>
 </body>
 </html>
