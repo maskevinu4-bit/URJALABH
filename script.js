@@ -45,7 +45,7 @@ function calculateROI() {
 
     // Display results
     const resultsDiv = document.getElementById('results');
-    document.getElementById('annualSavings').innerText = ₹ ${annualSavings.toLocaleString('en-IN', { maximumFractionDigits: 0 })};
+    document.getElementById('annualSavings').innerText = ₹ ${annualSavings.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
     document.getElementById('paybackPeriod').innerText = ${paybackPeriod.toFixed(1)} years;
     resultsDiv.style.display = 'block';
 }
