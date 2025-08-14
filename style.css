@@ -108,3 +108,21 @@ button[type="submit"]:hover { background-color: #229954; }
         flex-direction: column;
     }
 }
+/* --- Modern Background for Welcome Page --- */
+
+.welcome-page-body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1508514177221-188b2cf16e9c?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps the background stationary on scroll */
+}
+
+/* Make the content containers on the welcome page stand out */
+.welcome-page-body .main-header,
+.welcome-page-body .welcome-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
