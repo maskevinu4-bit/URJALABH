@@ -1,34 +1,78 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Logic for the calculator page ---
+    const roiForm = document.getElementById('roi-form');
+    if (roiForm) {
+        const locationDropdown = document.getElementById('location');
+        const rateInput = document.getElementById('rate');
+
+        // Define electricity rates for different locations
+        const electricityRates = {
+            'maharashtra': 9.00 // Average rate in ₹ per kWh
+        };
+
+        // Auto-fill rate based on location
+        locationDropdown.addEventListener('change', function() {
+            const selectedLocation = this.value;
+            rateInput.value = electricityRates[selectedLocation] || '';
+        });
+
+        // Handle the form submission
+        roiForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Stop the form from submitting the traditional way
+
+            // 1. Run the ROI calculation and display results
+            const calculationSuccessful = calculateROI();
+
+            // 2. If calculation is successful, submit data to Formspree
+            if (calculationSuccessful) {
+                const formData = new FormData(roiForm);
+                const formStatus = document.getElementById('form-status');
+                formStatus.textContent = 'Submitting...';
+
+                fetch(roiForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        formStatus.textContent = 'Thank you! Your details have been sent.';
+                        roiForm.reset(); // Optional: clear the form
+                    } else {
+                        formStatus.textContent = 'Oops! There was a problem submitting your form.';
+                    }
+                }).catch(error => {
+                    formStatus.textContent = 'Oops! There was a network problem.';
+                });
+            }
+        });
+    }
+});
+
 function calculateROI() {
-    // 1. Get user input values
     const area = parseFloat(document.getElementById('area').value);
     const installCost = parseFloat(document.getElementById('cost').value);
     const electricityRate = parseFloat(document.getElementById('rate').value);
 
-    // Check if inputs are valid numbers
     if (isNaN(area) || isNaN(installCost) || isNaN(electricityRate) || area <= 0 || installCost <= 0 || electricityRate <= 0) {
-        alert("Please enter valid positive numbers in all fields.");
-        return;
+        alert("Please fill in all fields with valid positive numbers.");
+        return false; // Indicate failure
     }
 
-    // 2. Assumptions for calculation (based on Indian averages)
-    // You can adjust these values for more accuracy
-    const solarIrradiance = 5.0; // Average kWh/m²/day in India
-    const panelEfficiency = 0.18; // 18% efficiency for a standard panel
-    const performanceRatio = 0.75; // Accounts for system losses (dust, heat, wiring)
-    const capacityPerSqm = 0.15; // Approx. 1 kW system needs 10 sq.m, so 1 sq.m gives 0.1 kW. We'll use 15% for a safer estimate.
+    const solarIrradiance = 5.0;
+    const capacityPerSqm = 0.15;
+    const performanceRatio = 0.75;
 
-    // 3. Perform the calculations
     const systemCapacityKW = area * capacityPerSqm;
-    // Energy Generated (kWh per year) = Capacity * Irradiance * 365 days * Performance Ratio
     const annualGeneration = systemCapacityKW * solarIrradiance * 365 * performanceRatio;
     const annualSavings = annualGeneration * electricityRate;
     const paybackPeriod = installCost / annualSavings;
 
-    // 4. Display the results
     const resultsDiv = document.getElementById('results');
     document.getElementById('annualSavings').innerText = ₹ ${annualSavings.toLocaleString('en-IN', { maximumFractionDigits: 0 })};
     document.getElementById('paybackPeriod').innerText = ${paybackPeriod.toFixed(1)} years;
-    
-    // Make the results visible
     resultsDiv.style.display = 'block';
+
+    return true; // Indicate success
 }
